@@ -1,5 +1,6 @@
 package com.cxf.febs.auth.configure;
 
+import com.cxf.febs.auth.filter.ValidateCodeFilter;
 import com.cxf.febs.auth.service.FebsUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @author sixpence
@@ -24,6 +26,8 @@ public class FebsSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private ValidateCodeFilter validateCodeFilter;
 
     @Bean
     @Override
@@ -33,7 +37,8 @@ public class FebsSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
+        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+            .requestMatchers()
                 //FebsSecurityConfigure安全配置类只对/oauth/开头的请求有效
                 .antMatchers("/oauth/**")
             .and()

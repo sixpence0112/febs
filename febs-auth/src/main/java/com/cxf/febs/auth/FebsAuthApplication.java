@@ -1,6 +1,7 @@
 package com.cxf.febs.auth;
 
 import com.cxf.febs.common.annotation.EnableFebsAuthExceptionHandler;
+import com.cxf.febs.common.annotation.EnableFebsLettuceRedis;
 import com.cxf.febs.common.annotation.EnableFebsServerProtect;
 import com.cxf.febs.common.annotation.FebsCloudApplication;
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,6 +13,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableDiscoveryClient
 @SpringBootApplication
 @FebsCloudApplication
+@EnableFebsLettuceRedis
 @EnableFebsAuthExceptionHandler
 @MapperScan("com.cxf.febs.auth.mapper")
 public class FebsAuthApplication {
