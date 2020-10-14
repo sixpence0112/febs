@@ -1,4 +1,4 @@
-package com.cxf.febs.gateway.configure;
+package com.cxf.febs.gateway.filter;
 
 import com.alibaba.csp.sentinel.adapter.gateway.common.SentinelGatewayConstants;
 import com.alibaba.csp.sentinel.adapter.gateway.common.api.ApiDefinition;
