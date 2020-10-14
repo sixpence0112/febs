@@ -41,7 +41,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> impleme
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void createUser(SystemUser user) {
         // 创建用户
         user.setCreateTime(new Date());
@@ -54,7 +54,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> impleme
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void updateUser(SystemUser user) {
         // 更新用户
         user.setPassword(null);
@@ -69,7 +69,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> impleme
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteUsers(String[] userIds) {
         List<String> list = Arrays.asList(userIds);
         removeByIds(list);
