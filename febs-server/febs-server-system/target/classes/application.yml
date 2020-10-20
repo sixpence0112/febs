@@ -21,7 +21,27 @@ spring:
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://localhost:3306/febs_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
       p6spy: true
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: febs
+        password: 123456
 
+info:
+  app:
+    name: ${spring.application.name}
+    description: "FEBS-Server-System微服务系统模块"
+    version: "1.0-SNAPSHOT"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 20

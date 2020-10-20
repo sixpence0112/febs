@@ -20,7 +20,12 @@ spring:
           password: 123456
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://localhost:3306/febs_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
-
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: febs
+        password: 123456
 
   redis:
     host: 127.0.0.1
@@ -33,6 +38,21 @@ spring:
         max-active: 2000
         max-wait: 10000
     timeout: 5000
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "FEBS-Cloud认证服务器"
+    version: "1.0-SNAPSHOT"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
 
 eureka:
   instance:

@@ -45,6 +45,8 @@ public class FebsSecurityConfigure extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/oauth/**").authenticated()
             .and()
+                .authorizeRequests().antMatchers("/actuator/**").permitAll()
+            .and()
                 .csrf().disable();
     }
 
