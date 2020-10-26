@@ -1,6 +1,7 @@
 package com.cxf.febs.server.test.controller;
 
 import com.cxf.febs.server.test.service.IHelloService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import java.security.Principal;
  * @author sixpence
  * @version 1.0 2020/9/21
  */
+@Slf4j
 @RestController
 public class TestController {
 
@@ -20,6 +22,7 @@ public class TestController {
 
     @GetMapping("hello")
     public String hello(String name) {
+        log.info("Feign调用febs-server-system的/hello服务");
         return this.helloService.hello(name);
     }
 
