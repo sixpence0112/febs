@@ -12,7 +12,7 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:8401
+        url: http://${febs-monitor-admin}:8401
         username: febs
         password: 123456
 
@@ -33,9 +33,9 @@ management:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${febs-register}
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: false
     instance-info-replication-interval-seconds: 30
     service-url:

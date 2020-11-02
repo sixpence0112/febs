@@ -6,11 +6,11 @@ spring:
   application:
     name: FEBS-Server-Test
   autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration, org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
   boot:
     admin:
       client:
-        url: http://localhost:8401
+        url: http://${febs-monitor-admin}:8401
         username: febs
         password: 123456
   zipkin:
@@ -20,7 +20,7 @@ spring:
     sampler:
       probability: 1
   rabbitmq:
-    host: localhost
+    host: ${rabbitmq.url}
     port: 5672
     username: febs
     password: 123456
@@ -49,13 +49,13 @@ eureka:
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     serviceUrl:
-      defaultZone: http://febs:123456@localhost:8001/register/eureka/
+      defaultZone: http://febs:123456@${febs-register}:8001/register/eureka/
 
 security:
   oauth2:
     resource:
       id: ${spring.application.name}
-      user-info-uri: http://localhost:8301/auth/user
+      user-info-uri: http://${febs-gateway}:8301/auth/user
 
 feign:
   hystrix:

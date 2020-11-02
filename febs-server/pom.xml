@@ -12,6 +12,7 @@
 
     <modules>
         <module>febs-server-system</module>
+        <module>febs-server-test</module>
     </modules>
 
     <artifactId>febs-server</artifactId>

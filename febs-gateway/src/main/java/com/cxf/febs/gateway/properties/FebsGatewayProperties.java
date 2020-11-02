@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 /**
  * @author sixpence
- * @version 1.0 2020/10/20
+ * @version 1.0 2020/10/29
  */
 @Data
 @SpringBootConfiguration

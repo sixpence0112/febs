@@ -5,28 +5,45 @@ spring:
   application:
     name: FEBS-Gateway
   autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
   boot:
     admin:
       client:
-        url: http://localhost:8401
+        url: http://${febs-monitor-admin}:8401
         username: febs
         password: 123456
-
-info:
-  app:
-    name: ${spring.application.name}
-    description: "@project.description@"
-    version: "@project.version@"
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  endpoint:
-    health:
-      show-details: ALWAYS
+  cloud:
+    gateway:
+      routes:
+        - id: FEBS-Auth
+          uri: lb://FEBS-Auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - name: Hystrix
+              args:
+                name: authfallback
+                fallbackUri: forward:/fallback/FEBS-Auth
+        - id: FEBS-Server-System
+          uri: lb://FEBS-Server-System
+          predicates:
+            - Path=/system/**
+          filters:
+            - name: Hystrix
+              args:
+                name: systemfallback
+                fallbackUri: forward:/fallback/FEBS-Server-System
+        - id: FEBS-Server-test
+          uri: lb://FEBS-Server-Test
+          predicates:
+            - Path=/test/**
+          filters:
+            - name: Hystrix
+              args:
+                name: testfallback
+                fallbackUri: forward:/fallback/FEBS-Server-Test
+      default-filters:
+        - StripPrefix=1
 
 eureka:
   instance:
@@ -37,30 +54,21 @@ eureka:
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     service-url:
-      defaultZone: http://febs:123456@localhost:8001/register/eureka/
+      defaultZone: http://febs:123456@${febs-register}:8001/register/eureka/
 
-zuul:
-  routes:
-    auth:
-      path: /auth/**
-      serviceId: FEBS-Auth
-      sensitiveHeaders: "*"
-    system:
-      path: /system/**
-      serviceId: FEBS-Server-System
-      sensitiveHeaders: "*"
-    test:
-      path: /test/**
-      serviceId: FEBS-Server-Test
-      sensitiveHeaders: "*"
-  retryable: true
-  ignored-services: "*"
-  ribbon:
-    eager-load:
-      enabled: true
-  SendErrorFilter:
-    error:
-      disable: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
 
-ribbon:
-  ReadTimeout: 30000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+  endpoint:
+    health:
+      show-details: ALWAYS
