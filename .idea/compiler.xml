@@ -12,10 +12,12 @@
         <module name="febs-auth" />
         <module name="febs-gateway" />
         <module name="febs-server-system" />
-        <module name="febs-register" />
         <module name="febs-monitor-admin" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="febs-register" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
