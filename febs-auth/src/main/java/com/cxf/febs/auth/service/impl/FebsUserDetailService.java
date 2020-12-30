@@ -1,4 +1,4 @@
-package com.cxf.febs.auth.service;
+package com.cxf.febs.auth.service.impl;
 
 import com.cxf.febs.auth.manager.UserManager;
 import com.cxf.febs.common.entity.FebsAuthUser;

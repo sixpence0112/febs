@@ -15,7 +15,6 @@ import org.springframework.context.annotation.PropertySource;
 @ConfigurationProperties(prefix = "febs.auth")
 public class FebsAuthProperties {
 
-    private FebsClientsProperties[] clients = {};
     private int accessTokenValiditySeconds = 60 * 60 * 24;
     private int refreshTokenValiditySeconds = 60 * 60 * 24 * 7;
     /**
@@ -26,4 +25,17 @@ public class FebsAuthProperties {
      *验证码配置类
      */
     private FebsValidateCodeProperties code = new FebsValidateCodeProperties();
+    /**
+     * JWT加签密钥
+     */
+    private String jwtAccessKey;
+    /**
+     * 是否使用 JWT令牌
+     */
+    private Boolean enableJwt;
+
+    /**
+     * 社交登录所使用的 Client
+     */
+    private String socialLoginClientId;
 }

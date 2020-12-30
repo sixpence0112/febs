@@ -1,6 +1,6 @@
 package com.cxf.febs.auth.controller;
 
-import com.cxf.febs.auth.service.ValidateCodeService;
+import com.cxf.febs.auth.service.impl.ValidateCodeServiceImpl;
 import com.cxf.febs.common.entity.FebsResponse;
 import com.cxf.febs.common.exception.FebsAuthException;
 import com.cxf.febs.common.exception.ValidateCodeException;
@@ -26,7 +26,7 @@ public class SecurityController {
     @Autowired
     private ConsumerTokenServices consumerTokenServices;
     @Autowired
-    private ValidateCodeService validateCodeService;
+    private ValidateCodeServiceImpl validateCodeService;
 
     @GetMapping("oauth/test")
     public String testAuth() {

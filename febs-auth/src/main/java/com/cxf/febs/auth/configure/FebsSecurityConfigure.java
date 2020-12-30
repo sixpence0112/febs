@@ -1,7 +1,8 @@
 package com.cxf.febs.auth.configure;
 
 import com.cxf.febs.auth.filter.ValidateCodeFilter;
-import com.cxf.febs.auth.service.FebsUserDetailService;
+import com.cxf.febs.auth.service.impl.FebsUserDetailService;
+import com.cxf.febs.common.entity.EndpointConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
@@ -38,15 +39,15 @@ public class FebsSecurityConfigure extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
-            .requestMatchers()
+                .requestMatchers()
                 //FebsSecurityConfigure安全配置类只对/oauth/开头的请求有效
-                .antMatchers("/oauth/**")
-            .and()
+                .antMatchers(EndpointConstant.OAUTH_ALL)
+                .and()
                 .authorizeRequests()
-                .antMatchers("/oauth/**").authenticated()
-            .and()
-                .authorizeRequests().antMatchers("/actuator/**").permitAll()
-            .and()
+                .antMatchers(EndpointConstant.OAUTH_ALL).authenticated()
+//                .and()
+//                .authorizeRequests().antMatchers("/actuator/**").permitAll()
+                .and()
                 .csrf().disable();
     }
 

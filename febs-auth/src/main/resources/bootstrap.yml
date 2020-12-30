@@ -1,6 +1,8 @@
 spring:
   application:
     name: FEBS-Auth
+  profiles:
+    active: dev
   cloud:
     nacos:
       discovery:
