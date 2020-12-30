@@ -27,6 +27,7 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.TokenRequest;
 import org.springframework.security.oauth2.provider.password.ResourceOwnerPasswordTokenGranter;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -37,6 +38,7 @@ import java.util.Map;
  * @author sixpence
  * @version 1.0 2020/12/30
  */
+@Service
 public class SocialLoginServiceImpl implements SocialLoginService {
 
     private static final String USERNAME = "username";
