@@ -19,6 +19,12 @@ public class FebsServerSystemProperties {
      * 免认证 URI，多个值的话以逗号分隔
      */
     private String anonUrl;
-
+    /**
+     * 批量插入当批次可插入的最大值
+     */
+    private Integer batchInsertMaxNum = 1000;
+    /**
+     * swagger配置
+     */
     private FebsSwaggerProperties swagger = new FebsSwaggerProperties();
 }

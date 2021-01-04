@@ -5,6 +5,7 @@ import com.cxf.febs.common.entity.router.VueRouter;
 import com.cxf.febs.common.entity.system.Menu;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -13,19 +14,24 @@ import java.util.Set;
  */
 public interface IMenuService extends IService<Menu> {
 
-    /**
-     * 通过用户名查询用户权限信息
-     *
-     * @param username 用户名
-     * @return 权限信息
-     */
-    Set<String> findUserPermissions(String username);
+    String findUserPermissions(String username);
+
+    List<Menu> findUserMenus(String username);
+
+    Map<String, Object> findMenus(Menu menu);
+
+    List<VueRouter<Menu>> getUserRouters(String username);
+
+    List<Menu> findMenuList(Menu menu);
+
+    void createMenu(Menu menu);
+
+    void updateMenu(Menu menu);
 
     /**
-     * 通过用户名创建对应的 Vue路由信息
+     * 递归删除菜单/按钮
      *
-     * @param username 用户名
-     * @return 路由信息
+     * @param menuIds menuIds
      */
-    List<VueRouter<Menu>> getUserRouters(String username);
+    void deleteMeuns(String[] menuIds);
 }

@@ -2,12 +2,15 @@ package com.cxf.febs.server.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cxf.febs.common.entity.QueryRequest;
+import com.cxf.febs.common.entity.constant.FebsConstant;
 import com.cxf.febs.common.entity.system.SystemUser;
 import com.cxf.febs.common.entity.system.UserRole;
+import com.cxf.febs.common.utils.SortUtil;
 import com.cxf.febs.server.system.mapper.UserMapper;
 import com.cxf.febs.server.system.service.IUserRoleService;
 import com.cxf.febs.server.system.service.IUserService;
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -35,13 +39,38 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> impleme
     private PasswordEncoder passwordEncoder;
 
     @Override
+    public SystemUser findByName(String username) {
+        LambdaQueryWrapper<SystemUser> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(SystemUser::getUsername, username);
+        return this.baseMapper.selectOne(queryWrapper);
+    }
+
+    @Override
     public IPage<SystemUser> findUserDetail(SystemUser user, QueryRequest request) {
         Page<SystemUser> page = new Page<>(request.getPageNum(), request.getPageSize());
+        SortUtil.handlePageSort(request, page, "userId", FebsConstant.ORDER_ASC, false);
         return this.baseMapper.findUserDetailPage(page, user);
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    public SystemUser findUserDetail(String username) {
+        SystemUser param = new SystemUser();
+        param.setUsername(username);
+        List<SystemUser> users = this.baseMapper.findUserDetail(param);
+        return CollectionUtils.isNotEmpty(users) ? users.get(0) : null;
+    }
+
+    @Override
+    @Transactional
+    public void updateLoginTime(String username) {
+        SystemUser user = new SystemUser();
+        user.setLastLoginTime(new Date());
+
+        this.baseMapper.update(user, new LambdaQueryWrapper<SystemUser>().eq(SystemUser::getUsername, username));
+    }
+
+    @Override
+    @Transactional
     public void createUser(SystemUser user) {
         // 创建用户
         user.setCreateTime(new Date());
@@ -54,7 +83,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> impleme
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void updateUser(SystemUser user) {
         // 更新用户
         user.setPassword(null);
@@ -69,7 +98,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> impleme
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void deleteUsers(String[] userIds) {
         List<String> list = Arrays.asList(userIds);
         removeByIds(list);
@@ -77,12 +106,50 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> impleme
         this.userRoleService.deleteUserRolesByUserId(userIds);
     }
 
+    @Override
+    @Transactional
+    public void updateProfile(SystemUser user) {
+        user.setPassword(null);
+        user.setUsername(null);
+        user.setStatus(null);
+        updateById(user);
+    }
+
+    @Override
+    @Transactional
+    public void updateAvatar(String username, String avatar) {
+        SystemUser user = new SystemUser();
+        user.setAvatar(avatar);
+        this.baseMapper.update(user, new LambdaQueryWrapper<SystemUser>().eq(SystemUser::getUsername, username));
+    }
+
+    @Override
+    @Transactional
+    public void updatePassword(String username, String password) {
+        SystemUser user = new SystemUser();
+        user.setPassword(passwordEncoder.encode(password));
+        this.baseMapper.update(user, new LambdaQueryWrapper<SystemUser>().eq(SystemUser::getUsername, username));
+    }
+
+    @Override
+    @Transactional
+    public void resetPassword(String[] usernames) {
+        SystemUser params = new SystemUser();
+        params.setPassword(passwordEncoder.encode(SystemUser.DEFAULT_PASSWORD));
+
+        List<String> list = Arrays.asList(usernames);
+        this.baseMapper.update(params, new LambdaQueryWrapper<SystemUser>().in(SystemUser::getUsername, list));
+
+    }
+
     private void setUserRoles(SystemUser user, String[] roles) {
+        List<UserRole> userRoles = new ArrayList<>();
         Arrays.stream(roles).forEach(roleId -> {
-            UserRole ur = new UserRole();
-            ur.setUserId(user.getUserId());
-            ur.setRoleId(Long.valueOf(roleId));
-            userRoleService.save(ur);
+            UserRole userRole = new UserRole();
+            userRole.setUserId(user.getUserId());
+            userRole.setRoleId(Long.valueOf(roleId));
+            userRoles.add(userRole);
         });
+        userRoleService.saveBatch(userRoles);
     }
 }

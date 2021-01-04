@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cxf.febs.common.entity.system.SystemUser;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author sixpence
  * @version 1.0 2020/10/14
@@ -20,4 +22,12 @@ public interface UserMapper extends BaseMapper<SystemUser> {
      * @return Ipage
      */
     IPage<SystemUser> findUserDetailPage(Page page, @Param("user") SystemUser user);
+
+    /**
+     * 查找用户详细信息
+     *
+     * @param user 用户对象，用于传递查询条件
+     * @return List<User>
+     */
+    List<SystemUser> findUserDetail(@Param("user") SystemUser user);
 }

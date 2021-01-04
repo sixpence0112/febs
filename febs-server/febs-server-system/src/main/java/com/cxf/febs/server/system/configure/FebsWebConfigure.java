@@ -3,11 +3,14 @@ package com.cxf.febs.server.system.configure;
 import com.baomidou.mybatisplus.core.parser.ISqlParser;
 import com.baomidou.mybatisplus.extension.parsers.BlockAttackSqlParser;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.cxf.febs.common.entity.constant.FebsConstant;
 import com.cxf.febs.server.system.properties.FebsServerSystemProperties;
 import com.cxf.febs.server.system.properties.FebsSwaggerProperties;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import springfox.documentation.builders.OAuthBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -21,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @author sixpence
@@ -33,9 +37,23 @@ public class FebsWebConfigure {
     @Autowired
     private FebsServerSystemProperties properties;
 
+    @Bean(FebsConstant.ASYNC_POOL)
+    public ThreadPoolTaskExecutor asyncThreadPoolTaskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(5);
+        executor.setMaxPoolSize(20);
+        executor.setQueueCapacity(100);
+        executor.setKeepAliveSeconds(30);
+        executor.setThreadNamePrefix("Febs-Async-Thread");
+        executor.setWaitForTasksToCompleteOnShutdown(true);
+        executor.setAwaitTerminationSeconds(60);
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        executor.initialize();
+        return executor;
+    }
+
     /**
-     * Mybatis-plus配置
-     * @return
+     * 注册分页插件
      */
     @Bean
     public PaginationInterceptor paginationInterceptor() {
@@ -47,7 +65,7 @@ public class FebsWebConfigure {
     }
 
     /**
-     * swagger配置
+     * swagger相关配置
      * @return
      */
     @Bean
@@ -92,7 +110,7 @@ public class FebsWebConfigure {
 
     private AuthorizationScope[] scopes(FebsSwaggerProperties swagger) {
         return new AuthorizationScope[]{
-                new AuthorizationScope(swagger.getScope(), "")
+                new AuthorizationScope(swagger.getScope(), StringUtils.EMPTY)
         };
     }
 }
