@@ -4,17 +4,15 @@ import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.cxf.febs.auth.mapper.MenuMapper;
 import com.cxf.febs.auth.mapper.UserMapper;
 import com.cxf.febs.auth.mapper.UserRoleMapper;
-import com.cxf.febs.common.entity.FebsConstant;
+import com.cxf.febs.common.entity.constant.FebsConstant;
 import com.cxf.febs.common.entity.system.Menu;
 import com.cxf.febs.common.entity.system.SystemUser;
 import com.cxf.febs.common.entity.system.UserRole;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;

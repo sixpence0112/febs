@@ -1,7 +1,7 @@
 package com.cxf.febs.auth.configure;
 
 import com.cxf.febs.auth.properties.FebsAuthProperties;
-import com.cxf.febs.common.entity.EndpointConstant;
+import com.cxf.febs.common.entity.constant.EndpointConstant;
 import com.cxf.febs.common.handler.FebsAccessDeniedHandler;
 import com.cxf.febs.common.handler.FebsAuthExceptionEntryPoint;
 import org.apache.commons.lang3.StringUtils;

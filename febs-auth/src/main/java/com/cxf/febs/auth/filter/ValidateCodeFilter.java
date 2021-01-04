@@ -1,10 +1,10 @@
 package com.cxf.febs.auth.filter;
 
 import com.cxf.febs.auth.service.impl.ValidateCodeServiceImpl;
-import com.cxf.febs.common.entity.EndpointConstant;
+import com.cxf.febs.common.entity.constant.EndpointConstant;
 import com.cxf.febs.common.entity.FebsResponse;
-import com.cxf.febs.common.entity.GrantTypeConstant;
-import com.cxf.febs.common.entity.ParamsConstant;
+import com.cxf.febs.common.entity.constant.GrantTypeConstant;
+import com.cxf.febs.common.entity.constant.ParamsConstant;
 import com.cxf.febs.common.exception.ValidateCodeException;
 import com.cxf.febs.common.utils.FebsUtil;
 import lombok.extern.slf4j.Slf4j;

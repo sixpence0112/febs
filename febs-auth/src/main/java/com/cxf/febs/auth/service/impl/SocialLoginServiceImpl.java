@@ -1,7 +1,6 @@
 package com.cxf.febs.auth.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cxf.febs.auth.entity.BindUser;
 import com.cxf.febs.auth.entity.UserConnection;
 import com.cxf.febs.auth.manager.UserManager;
@@ -9,6 +8,9 @@ import com.cxf.febs.auth.properties.FebsAuthProperties;
 import com.cxf.febs.auth.service.SocialLoginService;
 import com.cxf.febs.auth.service.UserConnectionService;
 import com.cxf.febs.common.entity.*;
+import com.cxf.febs.common.entity.constant.GrantTypeConstant;
+import com.cxf.febs.common.entity.constant.ParamsConstant;
+import com.cxf.febs.common.entity.constant.SocialConstant;
 import com.cxf.febs.common.entity.system.SystemUser;
 import com.cxf.febs.common.exception.FebsException;
 import com.cxf.febs.common.utils.HttpContextUtil;
