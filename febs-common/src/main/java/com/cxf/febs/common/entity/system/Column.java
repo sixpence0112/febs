@@ -7,7 +7,7 @@ import lombok.Data;
  * @version 1.0 2020/12/31
  */
 @Data
-public class Colunm {
+public class Column {
     /**
      * 名称
      */
