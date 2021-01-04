@@ -1,4 +1,4 @@
-package com.cxf.febs.gateway.handler;
+package com.cxf.febs.gateway.common.handler;
 
 import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowException;
 import lombok.extern.slf4j.Slf4j;
@@ -68,8 +68,13 @@ public class FebsGatewayExceptionHandler extends DefaultErrorWebExceptionHandler
         return RouterFunctions.route(RequestPredicates.all(), this::renderErrorResponse);
     }
 
-    @Override
+    /*@Override
     protected HttpStatus getHttpStatus(Map<String, Object> errorAttributes) {
         return HttpStatus.INTERNAL_SERVER_ERROR;
+    }*/
+
+    @Override
+    protected int getHttpStatus(Map<String, Object> errorAttributes) {
+        return HttpStatus.INTERNAL_SERVER_ERROR.value();
     }
 }

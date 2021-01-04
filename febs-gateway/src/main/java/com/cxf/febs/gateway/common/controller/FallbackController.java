@@ -1,4 +1,4 @@
-package com.cxf.febs.gateway.controller;
+package com.cxf.febs.gateway.common.controller;
 
 import com.cxf.febs.common.entity.FebsResponse;
 import org.springframework.http.HttpStatus;

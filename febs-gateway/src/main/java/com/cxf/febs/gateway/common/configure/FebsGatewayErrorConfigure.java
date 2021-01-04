@@ -1,6 +1,6 @@
-package com.cxf.febs.gateway.configure;
+package com.cxf.febs.gateway.common.configure;
 
-import com.cxf.febs.gateway.handler.FebsGatewayExceptionHandler;
+import com.cxf.febs.gateway.common.handler.FebsGatewayExceptionHandler;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
@@ -22,7 +22,7 @@ import java.util.List;
  * @version 1.0 2020/10/30
  */
 @Configuration
-public class FebsGatewayErrorConfigure {
+public class    FebsGatewayErrorConfigure {
 
     private final ServerProperties serverProperties;
     private final ApplicationContext applicationContext;

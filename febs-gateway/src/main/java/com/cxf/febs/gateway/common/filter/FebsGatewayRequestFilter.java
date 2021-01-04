@@ -1,9 +1,9 @@
-package com.cxf.febs.gateway.filter;
+package com.cxf.febs.gateway.common.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cxf.febs.common.entity.FebsConstant;
+import com.cxf.febs.common.entity.constant.FebsConstant;
 import com.cxf.febs.common.entity.FebsResponse;
-import com.cxf.febs.gateway.properties.FebsGatewayProperties;
+import com.cxf.febs.gateway.common.properties.FebsGatewayProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -60,8 +60,8 @@ public class FebsGatewayRequestFilter implements GlobalFilter {
         //日志打印
         printLog(exchange);
 
-        byte[] token = Base64Utils.encode(FebsConstant.ZUUL_TOKEN_VALUE.getBytes());
-        ServerHttpRequest build = request.mutate().header(FebsConstant.ZUUL_TOKEN_HEADER, new String(token)).build();
+        byte[] token = Base64Utils.encode(FebsConstant.GATEWAY_TOKEN_VALUE.getBytes());
+        ServerHttpRequest build = request.mutate().header(FebsConstant.GATEWAY_TOKEN_HEADER, new String(token)).build();
         ServerWebExchange newExchange = exchange.mutate().request(build).build();
         return chain.filter(newExchange);
     }
@@ -87,7 +87,7 @@ public class FebsGatewayRequestFilter implements GlobalFilter {
 
     private Mono<Void> makeResponse(ServerHttpResponse response, FebsResponse febsResponse) {
         response.setStatusCode(HttpStatus.FORBIDDEN);
-        response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE);
+        response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         DataBuffer dataBuffer = response.bufferFactory().wrap(JSONObject.toJSONString(febsResponse).getBytes());
         return response.writeWith(Mono.just(dataBuffer));
     }

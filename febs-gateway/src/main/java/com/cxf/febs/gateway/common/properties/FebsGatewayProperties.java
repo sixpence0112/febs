@@ -1,4 +1,4 @@
-package com.cxf.febs.gateway.properties;
+package com.cxf.febs.gateway.common.properties;
 
 import lombok.Data;
 import org.springframework.boot.SpringBootConfiguration;

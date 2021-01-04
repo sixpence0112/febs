@@ -45,10 +45,10 @@
     </appender>
 
     <!--输出到 logstash的 appender-->
-    <!--<appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>192.168.33.10:4560</destination>
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>192.168.33.16:4560</destination>
         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
-    </appender>-->
+    </appender>
 
     <root level="debug">
         <appender-ref ref="console" />

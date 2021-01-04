@@ -1,4 +1,4 @@
-package com.cxf.febs.gateway.configure;
+package com.cxf.febs.gateway.common.configure;
 
 import com.alibaba.csp.sentinel.adapter.gateway.common.SentinelGatewayConstants;
 import com.alibaba.csp.sentinel.adapter.gateway.common.api.ApiDefinition;
@@ -13,6 +13,7 @@ import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBloc
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.codec.ServerCodecConfigurer;
@@ -29,6 +30,7 @@ import java.util.Set;
  * @author sixpence
  * @version 1.0 2020/11/2
  */
+@Configuration
 public class FebsGatewaySentinelConfigure {
     private final List<ViewResolver> viewResolvers;
     private final ServerCodecConfigurer serverCodecConfigurer;
@@ -80,6 +82,7 @@ public class FebsGatewaySentinelConfigure {
                 .setCount(10)
                 .setIntervalSec(60)
         );
+
         GatewayRuleManager.loadRules(rules);
     }
 }
