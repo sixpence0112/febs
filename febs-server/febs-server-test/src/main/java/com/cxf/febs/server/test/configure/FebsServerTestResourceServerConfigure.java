@@ -1,5 +1,6 @@
 package com.cxf.febs.server.test.configure;
 
+import com.cxf.febs.common.entity.constant.EndpointConstant;
 import com.cxf.febs.common.handler.FebsAccessDeniedHandler;
 import com.cxf.febs.common.handler.FebsAuthExceptionEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +26,17 @@ public class FebsServerTestResourceServerConfigure extends ResourceServerConfigu
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .requestMatchers().antMatchers("/**")
-            .and()
+                .requestMatchers().antMatchers(EndpointConstant.ALL)
+                .and()
                 .authorizeRequests()
-                .antMatchers("/**").authenticated()
-                .antMatchers("/actuator/**").permitAll();
+                .antMatchers(EndpointConstant.ALL).authenticated()
+                .antMatchers("/actuator/**").permitAll()
+                .and()
+                .httpBasic();
     }
 
     @Override
-    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+    public void configure(ResourceServerSecurityConfigurer resources) {
         resources.accessDeniedHandler(accessDeniedHandler)
                 .authenticationEntryPoint(authExceptionEntryPoint);
     }
