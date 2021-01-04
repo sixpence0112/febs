@@ -20,7 +20,7 @@ public class FebsAuthExceptionEntryPoint implements AuthenticationEntryPoint {
                          AuthenticationException e) throws IOException {
 
         FebsResponse febsResponse = new FebsResponse();
-        FebsUtil.makeResponse(response, MediaType.APPLICATION_JSON_UTF8_VALUE,
+        FebsUtil.makeResponse(response, MediaType.APPLICATION_JSON_VALUE,
                 HttpServletResponse.SC_UNAUTHORIZED, febsResponse.message("token无效"));
 
     }

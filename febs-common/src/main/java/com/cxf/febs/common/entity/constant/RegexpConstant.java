@@ -1,4 +1,4 @@
-package com.cxf.febs.common.entity;
+package com.cxf.febs.common.entity.constant;
 
 /**
  * 正则表达式常量

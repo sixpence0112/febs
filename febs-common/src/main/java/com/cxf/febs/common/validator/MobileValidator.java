@@ -1,14 +1,13 @@
 package com.cxf.febs.common.validator;
 
 import com.cxf.febs.common.annotation.IsMobile;
-import com.cxf.febs.common.entity.RegexpConstant;
+import com.cxf.febs.common.entity.constant.RegexpConstant;
 import com.cxf.febs.common.utils.FebsUtil;
-import com.sun.org.apache.regexp.internal.RE;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.lang.annotation.Annotation;
+
 
 /**
  * @author sixpence

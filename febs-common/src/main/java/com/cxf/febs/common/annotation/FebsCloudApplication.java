@@ -1,7 +1,6 @@
 package com.cxf.febs.common.annotation;
 
 import com.cxf.febs.common.selector.FebsCloudApplicationSelector;
-import org.springframework.boot.actuate.endpoint.web.annotation.RestControllerEndpoint;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
