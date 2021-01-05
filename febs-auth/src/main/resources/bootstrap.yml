@@ -12,3 +12,13 @@ spring:
         group: DEFAULT_GROUP
         prefix: febs-auth
         file-extension: yaml
+
+logging:
+  level:
+    com:
+      alibaba:
+        cloud:
+          nacos:
+            client:
+              NacosPropertySourceBuilder: error
+
