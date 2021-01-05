@@ -6,7 +6,12 @@
 
     <groupId>com.cxf</groupId>
     <artifactId>febs-cloud</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.3-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>FEBS-Cloud</name>
+    <description>FEBS-Cloud：Spring Cloud，Spring Security OAuth2 微服务权限管理系统</description>
+
     <modules>
         <module>../febs-common</module>
         <module>../febs-auth</module>
@@ -14,10 +19,8 @@
         <module>../febs-server</module>
         <module>../febs-monitor</module>
     </modules>
-    <packaging>pom</packaging>
 
-    <name>FEBS-Cloud</name>
-    <description>FEBS-Cloud：Spring Cloud，Spring Security OAuth2 微服务权限管理系统</description>
+
 
     <parent>
         <groupId>org.springframework.boot</groupId>

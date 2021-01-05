@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.cxf</groupId>
         <artifactId>febs-monitor</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.3-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
     <artifactId>febs-monitor-admin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.3-SNAPSHOT</version>
     <name>FEBS-Monitor-Admin</name>
     <description>FEBS-Monitor-Admin基于Spring Boot Admin搭建的监控程序</description>
 

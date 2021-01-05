@@ -1,6 +1,8 @@
 spring:
   application:
     name: FEBS-Server-System
+  profiles:
+    active: dev
   cloud:
     nacos:
       discovery:
@@ -10,3 +12,13 @@ spring:
         group: DEFAULT_GROUP
         prefix: febs-server-system
         file-extension: yaml
+        refreshable-dataids:
+
+logging:
+  level:
+    com:
+      alibaba:
+        cloud:
+          nacos:
+            client:
+              NacosPropertySourceBuilder: error

@@ -51,7 +51,7 @@
 #  configuration:
 #    jdbc-type-for-null: null
 #  global-config:
-#    banner: false
+#    banner.txt: false
 #
 #info:
 #  app:
