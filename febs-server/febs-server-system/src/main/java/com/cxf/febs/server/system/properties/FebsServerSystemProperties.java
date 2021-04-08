@@ -27,4 +27,8 @@ public class FebsServerSystemProperties {
      * swagger配置
      */
     private FebsSwaggerProperties swagger = new FebsSwaggerProperties();
+    /**
+     * 个推配置
+     */
+    private FebsAppPushProperties appPush = new FebsAppPushProperties();
 }

@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.cxf.febs.common.entity.constant.FebsConstant;
 import com.cxf.febs.server.system.properties.FebsServerSystemProperties;
 import com.cxf.febs.server.system.properties.FebsSwaggerProperties;
+import com.getui.push.v2.sdk.ApiHelper;
+import com.getui.push.v2.sdk.GtApiConfiguration;
+import com.getui.push.v2.sdk.api.PushApi;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -36,6 +39,22 @@ public class FebsWebConfigure {
 
     @Autowired
     private FebsServerSystemProperties properties;
+
+    @Bean
+    public PushApi initPushApi() {
+        GtApiConfiguration apiConfiguration = new GtApiConfiguration();
+        //填写应用配置
+        apiConfiguration.setAppId(properties.getAppPush().getAppId());
+        apiConfiguration.setAppKey(properties.getAppPush().getAppKey());
+        apiConfiguration.setMasterSecret(properties.getAppPush().getMasterSecret());
+        // 接口调用前缀，请查看文档: 接口调用规范 -> 接口前缀, 可不填写appId
+        apiConfiguration.setDomain(properties.getAppPush().getDomain());
+        // 实例化ApiHelper对象，用于创建接口对象
+        ApiHelper apiHelper = ApiHelper.build(apiConfiguration);
+        // 创建对象，建议复用。目前有PushApi、StatisticApi、UserApi
+        PushApi pushApi = apiHelper.creatApi(PushApi.class);
+        return pushApi;
+    }
 
     @Bean(FebsConstant.ASYNC_POOL)
     public ThreadPoolTaskExecutor asyncThreadPoolTaskExecutor() {
