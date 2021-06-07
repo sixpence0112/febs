@@ -83,6 +83,12 @@ public class Movie implements Serializable {
     private Date modifyTime;
 
     /**
+     * 电影海报
+     */
+    @TableField("POSTER")
+    private byte[] poster;
+
+    /**
      * 最低评分
      */
     private transient String scoreFrom;

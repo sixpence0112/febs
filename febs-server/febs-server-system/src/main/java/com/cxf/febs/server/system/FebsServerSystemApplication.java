@@ -1,8 +1,8 @@
 package com.cxf.febs.server.system;
 
-import com.cxf.febs.common.annotation.EnableFebsAuthExceptionHandler;
-import com.cxf.febs.common.annotation.EnableFebsServerProtect;
 import com.cxf.febs.common.annotation.FebsCloudApplication;
+import net.hasor.spring.boot.EnableHasor;
+import net.hasor.spring.boot.EnableHasorWeb;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableHasor
+@EnableHasorWeb
 @SpringBootApplication
 @FebsCloudApplication
 @MapperScan("com.cxf.febs.server.system.mapper")

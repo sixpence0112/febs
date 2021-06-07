@@ -9,6 +9,9 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * @author sixpence
@@ -31,7 +34,9 @@ public class MovieController {
 
     @PostMapping
     @ApiOperation("添加电影")
-    public void addMovie(Movie movie) {
+    public void addMovie(Movie movie, MultipartFile file) throws IOException {
+        if (!file.isEmpty())
+            movie.setPoster(file.getBytes());
         this.movieService.addMovie(movie);
     }
 

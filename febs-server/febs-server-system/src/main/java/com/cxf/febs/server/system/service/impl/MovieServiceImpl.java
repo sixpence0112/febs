@@ -55,7 +55,6 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie> implements
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void addMovie(Movie movie) {
-
         movie.setCreateTime(new Date());
         save(movie);
     }

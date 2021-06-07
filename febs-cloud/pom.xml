@@ -18,6 +18,7 @@
         <module>../febs-gateway</module>
         <module>../febs-server</module>
         <module>../febs-monitor</module>
+        <module>../febs-canal</module>
     </modules>
 
 

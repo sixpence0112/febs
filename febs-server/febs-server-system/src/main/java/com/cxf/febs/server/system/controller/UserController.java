@@ -41,19 +41,21 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("success/{username}")
-    public void loginSuccess(@NotBlank(message = "{required}") @PathVariable String username, HttpServletRequest request) {
+
+    @GetMapping("success")
+    public void loginSuccess(HttpServletRequest request) {
+        String currentUsername = FebsUtil.getCurrentUsername();
         // update last login time
-        this.userService.updateLoginTime(username);
+        this.userService.updateLoginTime(currentUsername);
         // save login log
         LoginLog loginLog = new LoginLog();
-        loginLog.setUsername(username);
+        loginLog.setUsername(currentUsername);
         loginLog.setSystemBrowserInfo(request.getHeader("user-agent"));
         this.loginLogService.saveLoginLog(loginLog);
     }
 
-    @GetMapping("index/{username}")
-    public FebsResponse index(@NotBlank(message = "{required}") @PathVariable String username) {
+    @GetMapping("index")
+    public FebsResponse index() {
         Map<String, Object> data = new HashMap<>();
         // 获取系统访问记录
         Long totalVisitCount = loginLogService.findTotalVisitCount();
@@ -66,7 +68,7 @@ public class UserController {
         List<Map<String, Object>> lastTenVisitCount = loginLogService.findLastTenDaysVisitCount(null);
         data.put("lastTenVisitCount", lastTenVisitCount);
         SystemUser param = new SystemUser();
-        param.setUsername(username);
+        param.setUsername(FebsUtil.getCurrentUsername());
         List<Map<String, Object>> lastTenUserVisitCount = loginLogService.findLastTenDaysVisitCount(param);
         data.put("lastTenUserVisitCount", lastTenUserVisitCount);
         return new FebsResponse().data(data);
@@ -98,6 +100,13 @@ public class UserController {
     public void updateUser(@Valid SystemUser user) {
         this.userService.updateUser(user);
     }
+
+  /*  @GetMapping("/{userId}")
+    @PreAuthorize("hasAuthority('user:update')")
+    public FebsResponse findUserDataPermissions(@NotBlank(message = "{required}") @PathVariable String userId) {
+        String dataPermissions = this.userDataPermissionService.findByUserId(userId);
+        return new FebsResponse().data(dataPermissions);
+    }*/
 
     @DeleteMapping("/{userIds}")
     @PreAuthorize("hasAuthority('user:delete')")

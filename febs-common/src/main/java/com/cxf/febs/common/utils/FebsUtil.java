@@ -3,9 +3,13 @@ package com.cxf.febs.common.utils;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
+import com.cxf.febs.common.entity.FebsAuthUser;
 import com.cxf.febs.common.entity.constant.PageConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -123,5 +127,23 @@ public class FebsUtil {
         Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
         Matcher m = p.matcher(value);
         return m.find();
+    }
+
+    /**
+     * 获取当前用户名称
+     *
+     * @return String 用户名
+     */
+    public static String getCurrentUsername() {
+        Object principal = getOauth2Authentication().getPrincipal();
+        if (principal instanceof FebsAuthUser) {
+            return ((FebsAuthUser) principal).getUsername();
+        }
+        return (String) getOauth2Authentication().getPrincipal();
+    }
+
+    private static OAuth2Authentication getOauth2Authentication() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return (OAuth2Authentication) authentication;
     }
 }
