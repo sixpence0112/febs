@@ -1,9 +1,9 @@
 package com.cxf.febs.server.system.aspect;
 
-import com.cxf.febs.common.annotation.ControllerEndpoint;
-import com.cxf.febs.common.exception.FebsException;
-import com.cxf.febs.common.utils.FebsUtil;
-import com.cxf.febs.common.utils.HttpContextUtil;
+import com.cxf.febs.common.core.annotation.ControllerEndpoint;
+import com.cxf.febs.common.core.exception.FebsException;
+import com.cxf.febs.common.core.utils.FebsUtil;
+import com.cxf.febs.common.core.utils.HttpContextUtil;
 import com.cxf.febs.server.system.service.ILogService;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -29,7 +29,7 @@ public class ControllerEndpointAspect extends AspectSupport {
     @Autowired
     private ILogService logService;
 
-    @Pointcut("@annotation(com.cxf.febs.common.annotation.ControllerEndpoint)")
+    @Pointcut("@annotation(com.cxf.febs.common.core.annotation.ControllerEndpoint)")
     public void pointcut() {
 
     }

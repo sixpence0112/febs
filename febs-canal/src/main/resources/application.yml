@@ -1,48 +1,81 @@
-server:
-  port: 8201
-
-spring:
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
-  datasource:
-    dynamic:
-      hikari:
-        connection-timeout: 30000
-        max-lifetime: 1800000
-        max-pool-size: 15
-        min-idle: 5
-        connection-test-query: select 1
-        pool-name: FebsHikariCP
-      primary: base
-      datasource:
-        base:
-          username: root
-          password: 123456
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://${mysql.url}:3306/febs_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
-      p6spy: true
-  boot:
-    admin:
-      client:
-        url: http://${febs-monitor-admin}:8401
-        username: febs
-        password: 123456
-  rabbitmq:
-    host: ${rabbitmq.url}
-    port: 5672
-    username: febs
-    password: 123456
-
-security:
-  oauth2:
-    resource:
-      id: ${spring.application.name}
-      user-info-uri: http://${febs-gateway}:8301/auth/user
-
-mybatis-plus:
-  type-aliases-package: com.cxf.febs.common.entity.system
-  mapper-locations: classpath:mapper/*/*.xml
-  configuration:
-    jdbc-type-for-null: null
-  global-config:
-    banner.txt: false
+#server:
+#  port: 8501
+#
+#spring:
+#  autoconfigure:
+#    exclude: org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+#  datasource:
+#    dynamic:
+#      hikari:
+#        connection-timeout: 30000
+#        max-lifetime: 1800000
+#        max-pool-size: 15
+#        min-idle: 5
+#        connection-test-query: select 1
+#        pool-name: FebsHikariCP
+#      primary: base
+#      datasource:
+#        base:
+#          username: root
+#          password: 123456
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://${mysql.url}:3306/febs_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+#      p6spy: true
+#
+#  kafka:
+#    # Kafka服务地址
+#    bootstrap-servers: 127.0.0.1:9092
+#    consumer:
+#      # 指定一个默认的组名
+#      group-id: consumer-group1
+#      #序列化反序列化
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-serializer: org.apache.kafka.common.serialization.StringDeserializer
+#      # 批量抓取
+#      batch-size: 65536
+#      # 缓存容量
+#      buffer-memory: 524288
+#
+#  redis:
+#    host: ${redis.url}
+#    port: 6379
+#    password: 123456
+#    lettuce:
+#      pool:
+#        min-idle: 8
+#        max-idle: 500
+#        max-active: 2000
+#        max-wait: 10000
+#    timeout: 5000
+#
+#  boot:
+#    admin:
+#      client:
+#        url: http://${febs-monitor-admin}:8401
+#        username: febs
+#        password: 123456
+#
+##  rabbitmq:
+##    host: ${rabbitmq.url}
+##    port: 5672
+##    username: febs
+##    password: 123456
+#
+##security:
+##  oauth2:
+##    resource:
+##      id: ${spring.application.name}
+##      user-info-uri: http://${febs-gateway}:8301/auth/user
+#
+#
+#
+#mybatis-plus:
+#  type-aliases-package: com.cxf.febs.common.entity.system
+#  mapper-locations: classpath:mapper/*/*.xml
+#  configuration:
+#    jdbc-type-for-null: null
+#  global-config:
+#    banner.txt: false

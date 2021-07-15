@@ -1,6 +1,6 @@
 package com.cxf.febs.server.test.handler;
 
-import com.cxf.febs.common.handler.BaseExceptionHandler;
+import com.cxf.febs.common.core.handler.BaseExceptionHandler;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

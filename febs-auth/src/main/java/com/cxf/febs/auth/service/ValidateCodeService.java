@@ -1,6 +1,6 @@
 package com.cxf.febs.auth.service;
 
-import com.cxf.febs.common.exception.ValidateCodeException;
+import com.cxf.febs.common.core.exception.ValidateCodeException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

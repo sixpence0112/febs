@@ -1,7 +1,7 @@
 package com.cxf.febs.server.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cxf.febs.common.entity.system.Eximport;
+import com.cxf.febs.common.core.entity.system.Eximport;
 
 /**
  * @author sixpence

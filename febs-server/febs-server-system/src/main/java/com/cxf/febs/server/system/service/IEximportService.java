@@ -2,8 +2,8 @@ package com.cxf.febs.server.system.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cxf.febs.common.entity.QueryRequest;
-import com.cxf.febs.common.entity.system.Eximport;
+import com.cxf.febs.common.core.entity.QueryRequest;
+import com.cxf.febs.common.core.entity.system.Eximport;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.cxf.febs.auth.translator;
 
-import com.cxf.febs.common.entity.FebsResponse;
+import com.cxf.febs.common.core.entity.FebsResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;

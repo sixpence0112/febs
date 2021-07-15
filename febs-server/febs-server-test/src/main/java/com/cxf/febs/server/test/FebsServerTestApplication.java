@@ -1,9 +1,6 @@
 package com.cxf.febs.server.test;
 
-import com.cxf.febs.common.annotation.EnableFebsAuthExceptionHandler;
-import com.cxf.febs.common.annotation.EnableFebsOauth2FeignClient;
-import com.cxf.febs.common.annotation.EnableFebsServerProtect;
-import com.cxf.febs.common.annotation.FebsCloudApplication;
+import com.cxf.febs.common.core.annotation.FebsCloudApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

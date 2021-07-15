@@ -1,9 +1,9 @@
 package com.cxf.febs.auth.controller;
 
 import com.cxf.febs.auth.service.impl.ValidateCodeServiceImpl;
-import com.cxf.febs.common.entity.FebsResponse;
-import com.cxf.febs.common.exception.FebsAuthException;
-import com.cxf.febs.common.exception.ValidateCodeException;
+import com.cxf.febs.common.core.entity.FebsResponse;
+import com.cxf.febs.common.core.exception.FebsAuthException;
+import com.cxf.febs.common.core.exception.ValidateCodeException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;

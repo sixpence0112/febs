@@ -3,7 +3,7 @@ package com.cxf.febs.server.system.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cxf.febs.common.entity.system.SystemUser;
+import com.cxf.febs.common.core.entity.system.SystemUser;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

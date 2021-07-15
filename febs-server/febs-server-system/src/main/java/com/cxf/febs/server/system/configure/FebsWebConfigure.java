@@ -3,7 +3,7 @@ package com.cxf.febs.server.system.configure;
 import com.baomidou.mybatisplus.core.parser.ISqlParser;
 import com.baomidou.mybatisplus.extension.parsers.BlockAttackSqlParser;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import com.cxf.febs.common.entity.constant.FebsConstant;
+import com.cxf.febs.common.core.entity.constant.FebsConstant;
 import com.cxf.febs.server.system.properties.FebsServerSystemProperties;
 import com.cxf.febs.server.system.properties.FebsSwaggerProperties;
 import com.getui.push.v2.sdk.ApiHelper;

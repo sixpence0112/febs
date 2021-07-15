@@ -1,7 +1,7 @@
 package com.cxf.febs.server.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cxf.febs.common.entity.system.GeneratorConfig;
+import com.cxf.febs.common.core.entity.system.GeneratorConfig;
 
 /**
  * @author sixpence

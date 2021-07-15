@@ -1,7 +1,7 @@
 package com.cxf.febs.auth.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cxf.febs.common.entity.system.Menu;
+import com.cxf.febs.common.core.entity.system.Menu;
 
 import java.util.List;
 

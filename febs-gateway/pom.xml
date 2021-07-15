@@ -22,7 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>com.cxf</groupId>
-            <artifactId>febs-common</artifactId>
+            <artifactId>febs-common-core</artifactId>
             <version>1.3-SNAPSHOT</version>
             <exclusions>
                 <exclusion>

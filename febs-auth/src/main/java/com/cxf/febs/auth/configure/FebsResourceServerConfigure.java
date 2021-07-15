@@ -1,10 +1,11 @@
 package com.cxf.febs.auth.configure;
 
 import com.cxf.febs.auth.properties.FebsAuthProperties;
-import com.cxf.febs.common.entity.constant.EndpointConstant;
-import com.cxf.febs.common.handler.FebsAccessDeniedHandler;
-import com.cxf.febs.common.handler.FebsAuthExceptionEntryPoint;
-import org.apache.commons.lang3.StringUtils;
+import com.cxf.febs.common.core.entity.constant.EndpointConstant;
+import com.cxf.febs.common.core.handler.FebsAccessDeniedHandler;
+import com.cxf.febs.common.core.handler.FebsAuthExceptionEntryPoint;
+
+import net.logstash.logback.encoder.org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

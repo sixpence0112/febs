@@ -1,8 +1,8 @@
 package com.cxf.febs.gateway.common.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cxf.febs.common.entity.constant.FebsConstant;
-import com.cxf.febs.common.entity.FebsResponse;
+import com.cxf.febs.common.core.entity.FebsResponse;
+import com.cxf.febs.common.core.entity.constant.FebsConstant;
 import com.cxf.febs.gateway.common.properties.FebsGatewayProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;

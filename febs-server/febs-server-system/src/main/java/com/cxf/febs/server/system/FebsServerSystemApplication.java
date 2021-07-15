@@ -1,6 +1,6 @@
 package com.cxf.febs.server.system;
 
-import com.cxf.febs.common.annotation.FebsCloudApplication;
+import com.cxf.febs.common.core.annotation.FebsCloudApplication;
 import net.hasor.spring.boot.EnableHasor;
 import net.hasor.spring.boot.EnableHasorWeb;
 import org.mybatis.spring.annotation.MapperScan;

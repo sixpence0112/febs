@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: FEBS-Canal
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.url}:8001
+      config:
+        server-addr: ${nacos.url}:8001
+        group: DEFAULT_GROUP
+        prefix: febs-canal
+        file-extension: yaml
+        refreshable-dataids:
+
+logging:
+  level:
+    com:
+      alibaba:
+        cloud:
+          nacos:
+            client:
+              NacosPropertySourceBuilder: error

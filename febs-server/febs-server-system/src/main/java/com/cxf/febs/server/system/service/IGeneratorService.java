@@ -2,9 +2,9 @@ package com.cxf.febs.server.system.service;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.cxf.febs.common.entity.QueryRequest;
-import com.cxf.febs.common.entity.system.Column;
-import com.cxf.febs.common.entity.system.Table;
+import com.cxf.febs.common.core.entity.QueryRequest;
+import com.cxf.febs.common.core.entity.system.Column;
+import com.cxf.febs.common.core.entity.system.Table;
 
 import java.util.List;
 

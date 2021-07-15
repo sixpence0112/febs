@@ -2,7 +2,7 @@ package com.cxf.febs.server.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cxf.febs.common.entity.system.UserRole;
+import com.cxf.febs.common.core.entity.system.UserRole;
 import com.cxf.febs.server.system.mapper.UserRoleMapper;
 import com.cxf.febs.server.system.service.IUserRoleService;
 import org.springframework.stereotype.Service;

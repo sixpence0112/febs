@@ -2,7 +2,7 @@ package com.cxf.febs.server.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cxf.febs.common.entity.system.RoleMenu;
+import com.cxf.febs.common.core.entity.system.RoleMenu;
 import com.cxf.febs.server.system.mapper.RoleMenuMapper;
 import com.cxf.febs.server.system.service.IRoleMenuService;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package com.cxf.febs.server.test.controller;
 
-import com.cxf.febs.common.entity.FebsResponse;
-import com.cxf.febs.common.entity.QueryRequest;
-import com.cxf.febs.common.entity.system.SystemUser;
+import com.cxf.febs.common.core.entity.FebsResponse;
+import com.cxf.febs.common.core.entity.QueryRequest;
+import com.cxf.febs.common.core.entity.system.SystemUser;
 import com.cxf.febs.server.test.service.IHelloService;
 import com.cxf.febs.server.test.service.IUserService;
 import lombok.extern.slf4j.Slf4j;

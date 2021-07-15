@@ -1,6 +1,6 @@
 package com.cxf.febs.server.system.configure;
 
-import com.cxf.febs.common.utils.DateUtil;
+import com.cxf.febs.common.core.utils.DateUtil;
 import com.p6spy.engine.spy.appender.MessageFormattingStrategy;
 import org.apache.commons.lang3.StringUtils;
 

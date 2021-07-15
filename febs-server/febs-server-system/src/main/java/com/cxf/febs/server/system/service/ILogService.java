@@ -2,9 +2,9 @@ package com.cxf.febs.server.system.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cxf.febs.common.entity.QueryRequest;
-import com.cxf.febs.common.entity.constant.FebsConstant;
-import com.cxf.febs.common.entity.system.Log;
+import com.cxf.febs.common.core.entity.QueryRequest;
+import com.cxf.febs.common.core.entity.constant.FebsConstant;
+import com.cxf.febs.common.core.entity.system.Log;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.scheduling.annotation.Async;
 

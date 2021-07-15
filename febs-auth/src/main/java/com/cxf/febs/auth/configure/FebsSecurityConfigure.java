@@ -2,7 +2,7 @@ package com.cxf.febs.auth.configure;
 
 import com.cxf.febs.auth.filter.ValidateCodeFilter;
 import com.cxf.febs.auth.service.impl.FebsUserDetailService;
-import com.cxf.febs.common.entity.constant.EndpointConstant;
+import com.cxf.febs.common.core.entity.constant.EndpointConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;

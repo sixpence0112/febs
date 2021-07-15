@@ -3,8 +3,8 @@ package com.cxf.febs.auth.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cxf.febs.auth.entity.OAuthClientDetails;
-import com.cxf.febs.common.entity.QueryRequest;
-import com.cxf.febs.common.exception.FebsException;
+import com.cxf.febs.common.core.entity.QueryRequest;
+import com.cxf.febs.common.core.exception.FebsException;
 
 /**
  * @author sixpence

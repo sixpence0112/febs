@@ -1,0 +1,31 @@
+package com.cxf.febs.common.core.entity.system;
+
+import lombok.Data;
+
+/**
+ * @author sixpence
+ * @version 1.0 2020/12/31
+ */
+@Data
+public class Table {
+    /**
+     * 名称
+     */
+    private String name;
+    /**
+     * 备注
+     */
+    private String remark;
+    /**
+     * 数据量（行）
+     */
+    private Long dataRows;
+    /**
+     * 创建时间
+     */
+    private String createTime;
+    /**
+     * 修改时间
+     */
+    private String updateTime;
+}

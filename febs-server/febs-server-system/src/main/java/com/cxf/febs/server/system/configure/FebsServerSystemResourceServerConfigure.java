@@ -1,8 +1,8 @@
 package com.cxf.febs.server.system.configure;
 
-import com.cxf.febs.common.entity.constant.EndpointConstant;
-import com.cxf.febs.common.handler.FebsAccessDeniedHandler;
-import com.cxf.febs.common.handler.FebsAuthExceptionEntryPoint;
+import com.cxf.febs.common.core.entity.constant.EndpointConstant;
+import com.cxf.febs.common.core.handler.FebsAccessDeniedHandler;
+import com.cxf.febs.common.core.handler.FebsAuthExceptionEntryPoint;
 import com.cxf.febs.server.system.properties.FebsServerSystemProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

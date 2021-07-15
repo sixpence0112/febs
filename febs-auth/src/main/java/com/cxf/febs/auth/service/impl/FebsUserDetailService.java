@@ -1,8 +1,8 @@
 package com.cxf.febs.auth.service.impl;
 
 import com.cxf.febs.auth.manager.UserManager;
-import com.cxf.febs.common.entity.FebsAuthUser;
-import com.cxf.febs.common.entity.system.SystemUser;
+import com.cxf.febs.common.core.entity.FebsAuthUser;
+import com.cxf.febs.common.core.entity.system.SystemUser;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

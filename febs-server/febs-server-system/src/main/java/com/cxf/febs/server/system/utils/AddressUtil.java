@@ -1,6 +1,6 @@
 package com.cxf.febs.server.system.utils;
 
-import com.cxf.febs.common.entity.constant.FebsConstant;
+import com.cxf.febs.common.core.entity.constant.FebsConstant;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.lionsoul.ip2region.DataBlock;

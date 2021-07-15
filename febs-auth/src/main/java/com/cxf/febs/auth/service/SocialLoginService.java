@@ -2,8 +2,8 @@ package com.cxf.febs.auth.service;
 
 import com.cxf.febs.auth.entity.BindUser;
 import com.cxf.febs.auth.entity.UserConnection;
-import com.cxf.febs.common.entity.FebsResponse;
-import com.cxf.febs.common.exception.FebsException;
+import com.cxf.febs.common.core.entity.FebsResponse;
+import com.cxf.febs.common.core.exception.FebsException;
 import me.zhyd.oauth.model.AuthCallback;
 import me.zhyd.oauth.model.AuthUser;
 import me.zhyd.oauth.request.AuthRequest;

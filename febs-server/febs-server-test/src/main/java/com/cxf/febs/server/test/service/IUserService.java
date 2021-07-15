@@ -1,9 +1,9 @@
 package com.cxf.febs.server.test.service;
 
-import com.cxf.febs.common.entity.FebsResponse;
-import com.cxf.febs.common.entity.QueryRequest;
-import com.cxf.febs.common.entity.constant.FebsServerConstant;
-import com.cxf.febs.common.entity.system.SystemUser;
+import com.cxf.febs.common.core.entity.FebsResponse;
+import com.cxf.febs.common.core.entity.QueryRequest;
+import com.cxf.febs.common.core.entity.constant.FebsServerConstant;
+import com.cxf.febs.common.core.entity.system.SystemUser;
 import com.cxf.febs.server.test.service.fallback.UserServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -2,11 +2,11 @@ package com.cxf.febs.server.system.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cxf.febs.common.entity.QueryRequest;
-import com.cxf.febs.common.entity.constant.FebsConstant;
-import com.cxf.febs.common.entity.system.Column;
-import com.cxf.febs.common.entity.system.Table;
-import com.cxf.febs.common.utils.SortUtil;
+import com.cxf.febs.common.core.entity.QueryRequest;
+import com.cxf.febs.common.core.entity.constant.FebsConstant;
+import com.cxf.febs.common.core.entity.system.Column;
+import com.cxf.febs.common.core.entity.system.Table;
+import com.cxf.febs.common.core.utils.SortUtil;
 import com.cxf.febs.server.system.mapper.GeneratorMapper;
 import com.cxf.febs.server.system.service.IGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;

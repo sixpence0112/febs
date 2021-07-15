@@ -1,6 +1,6 @@
 package com.cxf.febs.server.system.runner;
 
-import com.cxf.febs.common.entity.constant.FebsServerConstant;
+import com.cxf.febs.common.core.entity.constant.FebsServerConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

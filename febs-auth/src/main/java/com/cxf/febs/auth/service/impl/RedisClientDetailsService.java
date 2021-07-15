@@ -1,7 +1,7 @@
 package com.cxf.febs.auth.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cxf.febs.common.service.RedisService;
+import com.cxf.febs.common.core.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.cxf.febs.server.test.service;
 
-import com.cxf.febs.common.entity.constant.FebsServerConstant;
+import com.cxf.febs.common.core.entity.constant.FebsServerConstant;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

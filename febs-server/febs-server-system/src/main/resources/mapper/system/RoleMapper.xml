@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cxf.febs.server.system.mapper.RoleMapper">
-    <resultMap id="roleMap" type="com.cxf.febs.common.entity.system.Role">
+    <resultMap id="roleMap" type="com.cxf.febs.common.core.entity.system.Role">
         <!--
           WARNING - @mbg.generated
         -->
@@ -23,7 +23,7 @@
             u.username = #{username}
     </select>
 
-    <select id="findRolePage" parameterType="com.cxf.febs.common.entity.system.Role" resultType="com.cxf.febs.common.entity.system.Role">
+    <select id="findRolePage" parameterType="com.cxf.febs.common.core.entity.system.Role" resultType="com.cxf.febs.common.core.entity.system.Role">
         SELECT
         r.role_id roleId,
         r.role_name roleName,

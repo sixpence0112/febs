@@ -1,8 +1,8 @@
 package com.cxf.febs.server.system.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.cxf.febs.common.entity.FebsResponse;
-import com.cxf.febs.common.entity.QueryRequest;
+import com.cxf.febs.common.core.entity.FebsResponse;
+import com.cxf.febs.common.core.entity.QueryRequest;
 import com.cxf.febs.server.system.entity.Movie;
 import com.cxf.febs.server.system.service.IMovieService;
 import io.swagger.annotations.ApiOperation;
