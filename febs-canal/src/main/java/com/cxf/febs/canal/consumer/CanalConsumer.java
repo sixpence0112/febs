@@ -9,6 +9,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -34,6 +35,7 @@ public class CanalConsumer {
         boolean isDdl = canalBean.isDdl();
         //获取类型
         String type = canalBean.getType();
+        HashSet hashSet = new HashSet();
         //不是DDL语句
         if (!isDdl) {
             List<TbCommodityInfo> tbCommodityInfos = canalBean.getData();
