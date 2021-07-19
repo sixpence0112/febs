@@ -1,10 +1,10 @@
 package com.cxf.febs.server.system.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
-import com.cxf.febs.common.core.annotation.ControllerEndpoint;
 import com.cxf.febs.common.core.entity.FebsResponse;
 import com.cxf.febs.common.core.entity.QueryRequest;
 import com.cxf.febs.common.core.entity.system.Dept;
+import com.cxf.febs.server.system.annotation.ControllerEndpoint;
 import com.cxf.febs.server.system.service.IDeptService;
 import com.wuwenze.poi.ExcelKit;
 import lombok.extern.slf4j.Slf4j;

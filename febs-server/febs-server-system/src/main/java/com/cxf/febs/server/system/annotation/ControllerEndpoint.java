@@ -1,4 +1,4 @@
-package com.cxf.febs.common.core.annotation;
+package com.cxf.febs.server.system.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

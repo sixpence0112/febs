@@ -1,9 +1,9 @@
 package com.cxf.febs.server.system.controller;
 
-import com.cxf.febs.common.core.annotation.ControllerEndpoint;
 import com.cxf.febs.common.core.entity.FebsResponse;
 import com.cxf.febs.common.core.entity.system.GeneratorConfig;
 import com.cxf.febs.common.core.exception.FebsException;
+import com.cxf.febs.server.system.annotation.ControllerEndpoint;
 import com.cxf.febs.server.system.service.IGeneratorConfigService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
