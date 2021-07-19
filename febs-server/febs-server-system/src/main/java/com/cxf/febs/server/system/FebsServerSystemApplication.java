@@ -1,6 +1,5 @@
 package com.cxf.febs.server.system;
 
-import com.cxf.febs.common.core.annotation.FebsCloudApplication;
 import net.hasor.spring.boot.EnableHasor;
 import net.hasor.spring.boot.EnableHasorWeb;
 import org.mybatis.spring.annotation.MapperScan;
@@ -15,7 +14,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @EnableHasor
 @EnableHasorWeb
 @SpringBootApplication
-@FebsCloudApplication
 @MapperScan("com.cxf.febs.server.system.mapper")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class FebsServerSystemApplication {
