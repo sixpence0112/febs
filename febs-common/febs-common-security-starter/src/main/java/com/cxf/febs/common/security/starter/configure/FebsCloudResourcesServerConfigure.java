@@ -2,8 +2,8 @@ package com.cxf.febs.common.security.starter.configure;
 
 import com.cxf.febs.common.core.entity.constant.EndpointConstant;
 import com.cxf.febs.common.core.entity.constant.StringConstant;
-import com.cxf.febs.common.core.handler.FebsAccessDeniedHandler;
-import com.cxf.febs.common.core.handler.FebsAuthExceptionEntryPoint;
+import com.cxf.febs.common.security.starter.handler.FebsAccessDeniedHandler;
+import com.cxf.febs.common.security.starter.handler.FebsAuthExceptionEntryPoint;
 import com.cxf.febs.common.security.starter.properties.FebsCloudSecurityProperties;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
