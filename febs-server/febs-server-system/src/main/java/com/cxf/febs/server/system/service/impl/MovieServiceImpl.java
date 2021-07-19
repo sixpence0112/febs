@@ -2,11 +2,11 @@ package com.cxf.febs.server.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cxf.febs.common.core.entity.QueryRequest;
 import com.cxf.febs.common.core.entity.constant.FebsConstant;
+import com.cxf.febs.common.core.entity.constant.StringConstant;
 import com.cxf.febs.common.core.utils.SortUtil;
 import com.cxf.febs.server.system.entity.Movie;
 import com.cxf.febs.server.system.mapper.MovieMapper;
@@ -67,7 +67,7 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie> implements
 
     @Override
     public void deleteMovie(String movieIds) {
-        String[] ids = movieIds.split(StringPool.COMMA);
+        String[] ids = movieIds.split(StringConstant.COMMA);
         Arrays.stream(ids).forEach(id -> baseMapper.deleteById(Integer.parseInt(id)));
     }
 }

@@ -6,9 +6,11 @@ import com.cxf.febs.common.core.entity.FebsAuthUser;
 import com.cxf.febs.common.core.entity.constant.PageConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -145,5 +147,31 @@ public class FebsUtil {
     private static OAuth2Authentication getOauth2Authentication() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return (OAuth2Authentication) authentication;
+    }
+
+    /**
+     * 设置JSON类型响应
+     *
+     * @param response HttpServletResponse
+     * @param status   http状态码
+     * @param value    响应内容
+     * @throws IOException IOException
+     */
+    public static void makeJsonResponse(HttpServletResponse response, int status, Object value) throws IOException {
+        makeResponse(response, MediaType.APPLICATION_JSON_VALUE, status, value);
+    }
+
+    /**
+     * 获取当前令牌内容
+     *
+     * @return String 令牌内容
+     */
+    public static String getCurrentTokenValue() {
+        try {
+            OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) getOauth2Authentication().getDetails();
+            return details.getTokenValue();
+        } catch (Exception ignore) {
+            return null;
+        }
     }
 }
