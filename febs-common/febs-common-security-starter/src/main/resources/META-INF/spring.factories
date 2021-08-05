@@ -1,0 +1,3 @@
+#AutoConfigure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.cxf.febs.common.security.starter.configure.FebsCloudSecurityAutoConfigure
