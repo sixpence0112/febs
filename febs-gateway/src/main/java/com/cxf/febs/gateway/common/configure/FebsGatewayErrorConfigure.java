@@ -1,6 +1,7 @@
 package com.cxf.febs.gateway.common.configure;
 
 import com.cxf.febs.gateway.common.handler.FebsGatewayExceptionHandler;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
@@ -22,25 +23,14 @@ import java.util.List;
  * @version 1.0 2020/10/30
  */
 @Configuration
-public class    FebsGatewayErrorConfigure {
+@RequiredArgsConstructor
+public class FebsGatewayErrorConfigure {
 
     private final ServerProperties serverProperties;
     private final ApplicationContext applicationContext;
     private final ResourceProperties resourceProperties;
     private final List<ViewResolver> viewResolvers;
     private final ServerCodecConfigurer serverCodecConfigurer;
-
-    public FebsGatewayErrorConfigure(ServerProperties serverProperties,
-                                     ApplicationContext applicationContext,
-                                     ResourceProperties resourceProperties,
-                                     ObjectProvider<List<ViewResolver>> viewResolversProvider,
-                                     ServerCodecConfigurer serverCodecConfigurer) {
-        this.serverProperties = serverProperties;
-        this.applicationContext = applicationContext;
-        this.resourceProperties = resourceProperties;
-        this.viewResolvers = viewResolversProvider.getIfAvailable(Collections::emptyList);
-        this.serverCodecConfigurer = serverCodecConfigurer;
-    }
 
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)

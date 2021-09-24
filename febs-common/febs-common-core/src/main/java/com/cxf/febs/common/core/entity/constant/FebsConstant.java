@@ -4,7 +4,7 @@ package com.cxf.febs.common.core.entity.constant;
  * @author sixpence
  * @version 1.0 2020/10/9
  */
-public class FebsConstant {
+public interface FebsConstant {
 
     /**
      * 排序规则：降序
@@ -55,4 +55,7 @@ public class FebsConstant {
      * 注册用户角色ID
      */
     public static final Long REGISTER_ROLE_ID = 2L;
+
+    String LOCALHOST = "localhost";
+    String LOCALHOST_IP = "127.0.0.1";
 }

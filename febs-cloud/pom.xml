@@ -31,7 +31,9 @@
     <properties>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
         <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
-    </properties>
+        <ip2region.version>1.7</ip2region.version>
+        <jjwt.version>0.9.1</jjwt.version>
+</properties>
 
     <dependencyManagement>
         <dependencies>

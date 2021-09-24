@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -15,7 +16,7 @@ import java.util.Locale;
  * @author sixpence
  * @version 1.0 2020/10/14
  */
-public class DateUtil {
+public abstract class DateUtil {
 
     public static final String FULL_TIME_PATTERN = "yyyyMMddHHmmss";
 
@@ -81,5 +82,17 @@ public class DateUtil {
     public static String formatInstant(Instant instant, String format) {
         LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
         return localDateTime.format(DateTimeFormatter.ofPattern(format));
+    }
+
+    /**
+     * 判断当前时间是否在指定时间范围
+     *
+     * @param from 开始时间
+     * @param to   结束时间
+     * @return 结果
+     */
+    public static boolean between(LocalTime from, LocalTime to) {
+        LocalTime now = LocalTime.now();
+        return now.isAfter(from) && now.isBefore(to);
     }
 }
