@@ -51,7 +51,6 @@ public class FebsDocAutoConfigure {
     }
 
 
-
     private ApiInfo groupApiInfo() {
         String description = String.format("<div style='font-size:%spx;color:%s;'>%s</div>",
                 properties.getDescriptionFontSize(), properties.getDescriptionColor(), properties.getDescription());

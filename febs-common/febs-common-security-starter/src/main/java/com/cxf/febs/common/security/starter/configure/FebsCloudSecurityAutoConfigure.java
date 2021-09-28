@@ -64,8 +64,8 @@ public class FebsCloudSecurityAutoConfigure extends GlobalMethodSecurityConfigur
 
     @Bean
     public RequestInterceptor oauth2FeignRequestInterceptor() {
-        return requestTemplate ->{
-            String gatewayToken =new String(Base64Utils.encode(FebsConstant.GATEWAY_TOKEN_VALUE.getBytes()));
+        return requestTemplate -> {
+            String gatewayToken = new String(Base64Utils.encode(FebsConstant.GATEWAY_TOKEN_VALUE.getBytes()));
             requestTemplate.header(FebsConstant.GATEWAY_TOKEN_HEADER, gatewayToken);
             String authorizationToken = FebsUtil.getCurrentTokenValue();
             if (StringUtils.isNotBlank(authorizationToken)) {

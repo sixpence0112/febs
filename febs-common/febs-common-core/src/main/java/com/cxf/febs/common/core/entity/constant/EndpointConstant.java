@@ -6,7 +6,7 @@ package com.cxf.febs.common.core.entity.constant;
  * @author sixpence
  * @version 1.0 2020/12/29
  */
-public class EndpointConstant {
+public interface EndpointConstant {
 
     public static final String ALL = "/**";
 

@@ -28,6 +28,7 @@ import java.util.Set;
 /**
  * 重写UserInfoTokenServices
  * {@link UserInfoTokenServices#loadAuthentication(String)}
+ *
  * @author sixpence
  * @version 1.0 2021/7/19
  */

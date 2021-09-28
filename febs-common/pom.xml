@@ -21,7 +21,9 @@
         <module>febs-common-core</module>
         <module>febs-common-doc</module>
         <module>febs-common-doc-starter</module>
+        <module>febs-common-datasource-starter</module>
         <module>febs-common-doc-gateway-starter</module>
+        <module>febs-common-redis-starter</module>
     </modules>
 
 

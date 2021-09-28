@@ -1,11 +1,14 @@
-package com.cxf.febs.common.core.configure;
+package com.cxf.febs.common.redis.starter.configure;
 
-import com.cxf.febs.common.core.service.RedisService;
+import com.cxf.febs.common.redis.starter.properties.FebsLettuceRedisProperties;
+import com.cxf.febs.common.redis.starter.service.RedisService;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisOperations;
@@ -15,30 +18,28 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @author sixpence
- * @version 1.0 2020/10/10
+ * @version 1.0 2021/9/27
  */
-public class FebsLettuceRedisConfigure {
+@EnableConfigurationProperties(FebsLettuceRedisProperties.class)
+@ConditionalOnProperty(value = "febs.lettuce.redis.enable", havingValue = "true", matchIfMissing = true)
+public class FebsLettuceRedisAutoConfigure {
 
-    @Bean
+    @Bean(name = "redisTemplate")
     @ConditionalOnClass(RedisOperations.class)
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(factory);
 
-        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Object>(Object.class);
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
         ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        mapper.activateDefaultTyping(mapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(mapper);
 
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-        // key采用 String的序列化方式
         template.setKeySerializer(stringRedisSerializer);
-        // hash的 key也采用 String的序列化方式
         template.setHashKeySerializer(stringRedisSerializer);
-        // value序列化方式采用 jackson
         template.setValueSerializer(jackson2JsonRedisSerializer);
-        // hash的 value序列化方式采用 jackson
         template.setHashValueSerializer(jackson2JsonRedisSerializer);
         template.afterPropertiesSet();
 

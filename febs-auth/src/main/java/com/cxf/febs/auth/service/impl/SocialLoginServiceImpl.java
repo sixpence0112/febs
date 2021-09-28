@@ -16,6 +16,7 @@ import com.cxf.febs.common.core.entity.system.SystemUser;
 import com.cxf.febs.common.core.exception.FebsException;
 import com.cxf.febs.common.core.utils.HttpContextUtil;
 import com.xkcoding.justauth.AuthRequestFactory;
+import lombok.RequiredArgsConstructor;
 import me.zhyd.oauth.config.AuthSource;
 import me.zhyd.oauth.model.AuthCallback;
 import me.zhyd.oauth.model.AuthResponse;
@@ -42,6 +43,7 @@ import java.util.Map;
  * @version 1.0 2020/12/30
  */
 @Service
+@RequiredArgsConstructor
 public class SocialLoginServiceImpl implements SocialLoginService {
 
     private static final String USERNAME = "username";
@@ -50,20 +52,13 @@ public class SocialLoginServiceImpl implements SocialLoginService {
     private static final String NOT_BIND = "not_bind";
     private static final String SOCIAL_LOGIN_SUCCESS = "social_login_success";
 
-    @Autowired
-    private UserManager userManager;
-    @Autowired
-    private AuthRequestFactory factory;
-    @Autowired
-    private FebsAuthProperties properties;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private UserConnectionService userConnectionService;
-    @Autowired
-    private ResourceOwnerPasswordTokenGranter granter;
-    @Autowired
-    private RedisClientDetailsService redisClientDetailsService;
+    private final UserManager userManager;
+    private final AuthRequestFactory factory;
+    private final FebsAuthProperties properties;
+    private final PasswordEncoder passwordEncoder;
+    private final UserConnectionService userConnectionService;
+    private final ResourceOwnerPasswordTokenGranter granter;
+    private final RedisClientDetailsService redisClientDetailsService;
 
     @Override
     public AuthRequest renderAuth(String oauthType) throws FebsException {
@@ -212,7 +207,7 @@ public class SocialLoginServiceImpl implements SocialLoginService {
         Map<String, String> requestParameters = new HashMap<>(5);
         requestParameters.put(ParamsConstant.GRANT_TYPE, GrantTypeConstant.PASSWORD);
         requestParameters.put(USERNAME, user.getUsername());
-        requestParameters.put(PASSWORD, SocialConstant.SOCIAL_LOGIN_PASSWORD);
+        requestParameters.put(PASSWORD, SocialConstant.setSocialLoginPassword());
 
         String grantTypes = String.join(",", clientDetails.getAuthorizedGrantTypes());
         TokenRequest tokenRequest = new TokenRequest(requestParameters, clientDetails.getClientId(), clientDetails.getScope(), grantTypes);

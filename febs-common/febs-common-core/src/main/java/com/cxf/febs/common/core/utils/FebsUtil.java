@@ -2,9 +2,11 @@ package com.cxf.febs.common.core.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.cxf.febs.common.core.entity.CurrentUser;
 import com.cxf.febs.common.core.entity.FebsAuthUser;
 import com.cxf.febs.common.core.entity.constant.PageConstant;
 import com.cxf.febs.common.core.entity.constant.StringConstant;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.env.Environment;
@@ -25,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -38,7 +41,7 @@ import java.util.stream.IntStream;
  * @version 1.0 2020/9/27
  */
 @Slf4j
-public class FebsUtil {
+public abstract class FebsUtil {
 
     private static final String UNKNOW = "unknown";
 
@@ -238,6 +241,28 @@ public class FebsUtil {
             ip = Objects.requireNonNull(request.getRemoteAddress()).getAddress().getHostAddress();
         }
         return "0:0:0:0:0:0:0:1".equals(ip) ? "127.0.0.1" : ip;
+    }
+
+    /**
+     * 获取在线用户信息
+     *
+     * @return CurrentUser 当前用户信息
+     */
+    public static CurrentUser getCurrentUser() {
+        try {
+            LinkedHashMap<String, Object> authenticationDetails = getAuthenticationDetails();
+            Object principal = authenticationDetails.get("principal");
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(mapper.writeValueAsString(principal), CurrentUser.class);
+        } catch (Exception e) {
+            log.error("获取当前用户信息失败", e);
+            return null;
+        }
+    }
+
+    @SuppressWarnings("all")
+    private static LinkedHashMap<String, Object> getAuthenticationDetails() {
+        return (LinkedHashMap<String, Object>) getOauth2Authentication().getUserAuthentication().getDetails();
     }
 
     public static void printSystemUpBanner(Environment environment) {

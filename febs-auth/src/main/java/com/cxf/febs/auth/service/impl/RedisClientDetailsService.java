@@ -1,10 +1,9 @@
 package com.cxf.febs.auth.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cxf.febs.common.core.service.RedisService;
+import com.cxf.febs.common.redis.starter.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
@@ -26,11 +25,11 @@ public class RedisClientDetailsService extends JdbcClientDetailsService {
      */
     private static final String CACHE_CLIENT_KEY = "client_details";
 
-    @Autowired
-    RedisService redisService;
+    private final RedisService redisService;
 
-    public RedisClientDetailsService(DataSource dataSource) {
+    public RedisClientDetailsService(DataSource dataSource, RedisService redisService) {
         super(dataSource);
+        this.redisService = redisService;
     }
     @Override
     public ClientDetails loadClientByClientId(String clientId) {

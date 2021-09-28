@@ -3,7 +3,7 @@ package com.cxf.febs.canal.consumer;
 import com.alibaba.fastjson.JSONObject;
 import com.cxf.febs.canal.entity.CanalBean;
 import com.cxf.febs.canal.entity.TbCommodityInfo;
-import com.cxf.febs.common.core.service.RedisService;
+import com.cxf.febs.common.redis.starter.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;

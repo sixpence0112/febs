@@ -1,7 +1,7 @@
 package com.cxf.febs.gateway.enhance.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cxf.febs.common.core.service.RedisService;
+import com.cxf.febs.common.redis.starter.service.RedisService;
 import com.cxf.febs.gateway.enhance.entity.BlackList;
 import com.cxf.febs.gateway.enhance.entity.RateLimitRule;
 import com.cxf.febs.gateway.enhance.service.RouteEnhanceCacheService;

@@ -31,8 +31,11 @@
     <properties>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
         <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
+        <dynamic-datasource.version>2.5.7</dynamic-datasource.version>
+        <p6spy.version>3.8.5</p6spy.version>
         <ip2region.version>1.7</ip2region.version>
         <jjwt.version>0.9.1</jjwt.version>
+        <logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
 </properties>
 
     <dependencyManagement>

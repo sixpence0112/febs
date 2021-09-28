@@ -7,7 +7,7 @@ import com.cxf.febs.common.core.entity.constant.FebsConstant;
 import com.cxf.febs.common.core.entity.constant.ImageTypeConstant;
 import com.cxf.febs.common.core.entity.constant.ParamsConstant;
 import com.cxf.febs.common.core.exception.ValidateCodeException;
-import com.cxf.febs.common.core.service.RedisService;
+import com.cxf.febs.common.redis.starter.service.RedisService;
 import com.wf.captcha.GifCaptcha;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;

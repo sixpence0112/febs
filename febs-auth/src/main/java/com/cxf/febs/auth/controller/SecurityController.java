@@ -2,13 +2,13 @@ package com.cxf.febs.auth.controller;
 
 import com.cxf.febs.auth.service.impl.ValidateCodeServiceImpl;
 import com.cxf.febs.common.core.entity.FebsResponse;
-import com.cxf.febs.common.core.exception.FebsAuthException;
 import com.cxf.febs.common.core.exception.ValidateCodeException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,14 +39,10 @@ public class SecurityController {
     }
 
     @DeleteMapping("signout")
-    public FebsResponse signout(HttpServletRequest request) throws FebsAuthException {
-        String authorization = request.getHeader("Authorization");
-        String token = StringUtils.replace(authorization, "bearer ", "");
-        FebsResponse febsResponse = new FebsResponse();
-        if (!consumerTokenServices.revokeToken(token)) {
-            throw new FebsAuthException("退出登录失败");
-        }
-        return febsResponse.message("退出登录成功");
+    public FebsResponse signout(HttpServletRequest request, @RequestHeader("Authorization") String token) {
+        token = StringUtils.replace(token, "bearer ", "");
+        consumerTokenServices.revokeToken(token);
+        return new FebsResponse().message("signout");
     }
 
     @GetMapping("captcha")

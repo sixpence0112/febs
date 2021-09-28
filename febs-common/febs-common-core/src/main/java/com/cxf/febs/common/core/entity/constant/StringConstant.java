@@ -2,6 +2,7 @@ package com.cxf.febs.common.core.entity.constant;
 
 /**
  * 端点常量
+ *
  * @author sixpence
  * @version 1.0 2021/7/16
  */

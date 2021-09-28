@@ -27,6 +27,4 @@ public class RouterMeta implements Serializable {
 
     private Boolean breadcrumb = true;
 
-    public RouterMeta(String menuName, String icon) {
-    }
 }

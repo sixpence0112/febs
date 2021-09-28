@@ -1,4 +1,6 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: FEBS-Gateway
   cloud:
@@ -10,6 +12,11 @@ spring:
         group: DEFAULT_GROUP
         prefix: febs-gateway
         file-extension: yaml
+  boot:
+    admin:
+      client:
+        instance:
+          prefer-ip: true
 
 logging:
   level:
