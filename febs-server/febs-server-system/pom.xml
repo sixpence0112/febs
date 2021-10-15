@@ -15,10 +15,30 @@
     <description>FEBS-Server-System微服务系统模块</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <febs-cloud.version>2.1-RELEASE</febs-cloud.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.cxf</groupId>
+            <artifactId>febs-common-datasource-starter</artifactId>
+            <version>${febs-cloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cxf</groupId>
+            <artifactId>febs-common-security-starter</artifactId>
+            <version>${febs-cloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cxf</groupId>
+            <artifactId>febs-common-doc-starter</artifactId>
+            <version>${febs-cloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cxf</groupId>
+            <artifactId>febs-common-logging-starter</artifactId>
+            <version>${febs-cloud.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

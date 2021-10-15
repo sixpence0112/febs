@@ -14,6 +14,7 @@ import java.util.Date;
  * @version 1.0 2020/9/18
  */
 @Data
+@SuppressWarnings("all")
 @EqualsAndHashCode(callSuper = true)
 public class FebsAuthUser extends User {
 
@@ -42,6 +43,8 @@ public class FebsAuthUser extends User {
     private String description;
 
     private String status;
+
+    private String deptIds;
 
     public FebsAuthUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);

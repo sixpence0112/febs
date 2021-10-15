@@ -20,6 +20,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import reactor.core.publisher.Mono;
 
 import javax.servlet.http.HttpServletRequest;
@@ -166,6 +168,15 @@ public abstract class FebsUtil {
     }
 
     /**
+     * 获取HttpServletRequest
+     *
+     * @return HttpServletRequest
+     */
+    public static HttpServletRequest getHttpServletRequest() {
+        return ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+    }
+
+    /**
      * 设置JSON类型响应
      *
      * @param response HttpServletResponse
@@ -189,6 +200,28 @@ public abstract class FebsUtil {
         } catch (Exception ignore) {
             return null;
         }
+    }
+
+    /**
+     * 设置失败响应
+     *
+     * @param response HttpServletResponse
+     * @param value    响应内容
+     * @throws IOException IOException
+     */
+    public static void makeFailureResponse(HttpServletResponse response, Object value) throws IOException {
+        makeResponse(response, MediaType.APPLICATION_JSON_VALUE, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, value);
+    }
+
+    /**
+     * 设置成功响应
+     *
+     * @param response HttpServletResponse
+     * @param value    响应内容
+     * @throws IOException IOException
+     */
+    public static void makeSuccessResponse(HttpServletResponse response, Object value) throws IOException {
+        makeResponse(response, MediaType.APPLICATION_JSON_VALUE, HttpServletResponse.SC_OK, value);
     }
 
     /**

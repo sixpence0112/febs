@@ -13,6 +13,7 @@
     <modules>
         <module>febs-server-system</module>
         <module>febs-server-test</module>
+        <module>febs-server-generator</module>
     </modules>
 
     <artifactId>febs-server</artifactId>
@@ -59,10 +60,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.amqp</groupId>

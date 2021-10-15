@@ -15,7 +15,7 @@
     <description>FEBS-Cloud认证服务器</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <febs-cloud.version>2.1-RELEASE</febs-cloud.version>
     </properties>
 
     <dependencies>
@@ -33,6 +33,21 @@
             <groupId>com.cxf</groupId>
             <artifactId>febs-common-redis-starter</artifactId>
             <version>2.1-RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cxf</groupId>
+            <artifactId>febs-common-datasource-starter</artifactId>
+            <version>${febs-cloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cxf</groupId>
+            <artifactId>febs-common-doc-starter</artifactId>
+            <version>${febs-cloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cxf</groupId>
+            <artifactId>febs-common-logging-starter</artifactId>
+            <version>${febs-cloud.version}</version>
         </dependency>
 
         <!-- MySQL连接驱动和MyBatis Plus多数据源 -->
@@ -78,6 +93,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
         </dependency>
     </dependencies>
 

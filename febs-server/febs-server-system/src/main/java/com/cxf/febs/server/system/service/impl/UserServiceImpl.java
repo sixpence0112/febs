@@ -14,6 +14,7 @@ import com.cxf.febs.common.core.utils.SortUtil;
 import com.cxf.febs.server.system.mapper.UserMapper;
 import com.cxf.febs.server.system.service.IUserRoleService;
 import com.cxf.febs.server.system.service.IUserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,12 +31,11 @@ import java.util.List;
  * @version 1.0 2020/10/14
  */
 @Service
+@RequiredArgsConstructor
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> implements IUserService {
 
-    @Autowired
     private IUserRoleService userRoleService;
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override

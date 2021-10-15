@@ -17,7 +17,7 @@
         <module>../febs-auth</module>
         <module>../febs-gateway</module>
         <module>../febs-server</module>
-        <module>../febs-monitor</module>
+        <module>../febs-apm</module>
         <module>../febs-canal</module>
     </modules>
 
@@ -36,7 +36,8 @@
         <ip2region.version>1.7</ip2region.version>
         <jjwt.version>0.9.1</jjwt.version>
         <logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
-</properties>
+        <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
+    </properties>
 
     <dependencyManagement>
         <dependencies>

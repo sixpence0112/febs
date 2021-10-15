@@ -2,15 +2,16 @@ package com.cxf.febs.auth.configure;
 
 
 import com.cxf.febs.auth.properties.FebsAuthProperties;
-import com.cxf.febs.auth.service.impl.FebsUserDetailService;
+import com.cxf.febs.auth.service.impl.RedisAuthenticationCodeService;
 import com.cxf.febs.auth.service.impl.RedisClientDetailsService;
 import com.cxf.febs.auth.translator.FebsWebResponseExceptionTranslator;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -37,27 +38,23 @@ import java.util.UUID;
  */
 @Configuration
 @EnableAuthorizationServer
+@RequiredArgsConstructor
 public class FebsAuthorizationServerConfigure extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private FebsUserDetailService userDetailService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private FebsAuthProperties properties;
-    @Autowired
-    private FebsWebResponseExceptionTranslator exceptionTranslator;
-    @Autowired
-    private RedisClientDetailsService redisClientDetailsService;
-    @Autowired
-    private RedisConnectionFactory redisConnectionFactory;
+    private final AuthenticationManager authenticationManager;
+    private final UserDetailsService userDetailService;
+    private final PasswordEncoder passwordEncoder;
+    private final FebsAuthProperties properties;
+    private final FebsWebResponseExceptionTranslator exceptionTranslator;
+    private final RedisAuthenticationCodeService authenticationCodeService;
+    private final RedisClientDetailsService redisClientDetailsService;
+    private final RedisConnectionFactory redisConnectionFactory;
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.tokenStore(tokenStore())
                 .userDetailsService(userDetailService)
+                .authorizationCodeServices(authenticationCodeService)
                 .authenticationManager(authenticationManager)
                 .exceptionTranslator(exceptionTranslator);
         if (properties.getEnableJwt()) {

@@ -7,6 +7,7 @@ import com.cxf.febs.common.core.entity.constant.GrantTypeConstant;
 import com.cxf.febs.common.core.entity.constant.ParamsConstant;
 import com.cxf.febs.common.core.exception.ValidateCodeException;
 import com.cxf.febs.common.core.utils.FebsUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,27 +36,25 @@ import java.util.Base64;
  */
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class ValidateCodeFilter extends OncePerRequestFilter {
 
-    @Autowired
-    private ValidateCodeServiceImpl validateCodeService;
+    private final ValidateCodeServiceImpl validateCodeService;
 
     @Override
-    protected void doFilterInternal(@Nonnull HttpServletRequest httpServletRequest, @Nonnull HttpServletResponse httpServletResponse, @Nonnull FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@Nonnull HttpServletRequest httpServletRequest, @Nonnull HttpServletResponse httpServletResponse,
+                                    @Nonnull FilterChain filterChain) throws ServletException, IOException {
         String header = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
-        String clientId = getClientId(header, httpServletRequest);
 
         RequestMatcher matcher = new AntPathRequestMatcher(EndpointConstant.OAUTH_TOKEN, HttpMethod.POST.toString());
         if (matcher.matches(httpServletRequest)
-                && StringUtils.equalsIgnoreCase(httpServletRequest.getParameter(ParamsConstant.GRANT_TYPE), GrantTypeConstant.PASSWORD)
-                && !StringUtils.equalsAnyIgnoreCase(clientId, "swagger")) {
+                && StringUtils.equalsIgnoreCase(httpServletRequest.getParameter(ParamsConstant.GRANT_TYPE), GrantTypeConstant.PASSWORD)) {
             try {
                 validateCode(httpServletRequest);
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
             } catch (ValidateCodeException e) {
                 FebsResponse febsResponse = new FebsResponse();
-                FebsUtil.makeResponse(httpServletResponse, MediaType.APPLICATION_JSON_VALUE,
-                        HttpServletResponse.SC_INTERNAL_SERVER_ERROR, febsResponse.message(e.getMessage()));
+                FebsUtil.makeFailureResponse(httpServletResponse, febsResponse.message(e.getMessage()));
                 log.error(e.getMessage(), e);
             }
         } else {
@@ -69,20 +68,4 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
         validateCodeService.check(key, code);
     }
 
-    private String getClientId(String header, HttpServletRequest request) {
-        String clientId = "";
-        try {
-            byte[] base64Token = header.substring(6).getBytes(StandardCharsets.UTF_8);
-            byte[] decoded;
-            decoded = Base64.getDecoder().decode(base64Token);
-
-            String token = new String(decoded, StandardCharsets.UTF_8);
-            int delim = token.indexOf(":");
-            if (delim != -1) {
-                clientId = new String[]{token.substring(0, delim), token.substring(delim + 1)}[0];
-            }
-        } catch (Exception ignore) {
-        }
-        return clientId;
-    }
 }
