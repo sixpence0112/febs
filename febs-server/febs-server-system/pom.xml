@@ -34,11 +34,11 @@
             <artifactId>febs-common-doc-starter</artifactId>
             <version>${febs-cloud.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.cxf</groupId>
             <artifactId>febs-common-logging-starter</artifactId>
             <version>${febs-cloud.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -90,7 +90,7 @@
             <version>1.0.0.0</version>
         </dependency>
 
-        <!--Dataway依赖-->
+<!--        &lt;!&ndash;Dataway依赖&ndash;&gt;
         <dependency>
             <groupId>net.hasor</groupId>
             <artifactId>hasor-spring</artifactId>
@@ -100,7 +100,7 @@
             <groupId>net.hasor</groupId>
             <artifactId>hasor-dataway</artifactId>
             <version>4.2.4</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

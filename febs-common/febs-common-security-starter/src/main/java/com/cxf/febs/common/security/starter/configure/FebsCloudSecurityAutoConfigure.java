@@ -55,12 +55,12 @@ public class FebsCloudSecurityAutoConfigure extends GlobalMethodSecurityConfigur
         return new FebsCloudSecurityInterceptorConfigure();
     }
 
-    @Bean
+/*    @Bean
     @Primary
     @ConditionalOnMissingBean(DefaultTokenServices.class)
     public FebsUserInfoTokenServices febsUserInfoTokenServices(ResourceServerProperties properties) {
         return new FebsUserInfoTokenServices(properties.getUserInfoUri(), properties.getClientId());
-    }
+    }*/
 
     @Bean
     public RequestInterceptor oauth2FeignRequestInterceptor() {

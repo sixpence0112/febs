@@ -53,4 +53,9 @@ public class Fund {
     @TableField("modify_time")
     private Date modifyTime;
 
+    /**
+     * 分组名称
+     */
+    private transient String groupName;
+    private transient String groupId;
 }

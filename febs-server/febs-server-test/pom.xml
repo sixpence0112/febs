@@ -37,6 +37,14 @@
         </dependency>
     </dependencies>-->
 
+    <dependencies>
+        <dependency>
+            <groupId>com.cxf</groupId>
+            <artifactId>febs-common-security-starter</artifactId>
+            <version>2.1-RELEASE</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

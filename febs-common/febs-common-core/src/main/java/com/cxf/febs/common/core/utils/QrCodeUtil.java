@@ -215,7 +215,7 @@ public class QrCodeUtil {
 
     public static void main(String[] args) throws QrParamsException {
         generateQRImage(QrCodeParams.builder()
-                .fileName("二维码.png")
+                .fileName("二维码3.png")
                 .filePath("d:/qr/")
                 .height(150)
                 .width(150)

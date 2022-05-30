@@ -5,9 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author sixpence
@@ -147,7 +145,7 @@ public class RandomUtils {
         for (int i = 0; i < length; i++) {
             if (useChar) {
                 int ranIndex = ran.nextInt(CHARS.length);
-                bulider.append(CHARS[ranIndex]);
+                bulider.append(MULT[ranIndex]);
             } else {
                 int ranIndex = ran.nextInt(NUMS.length);
                 if (i == 0 && ranIndex == 0) { //首位不允许0
@@ -248,12 +246,12 @@ public class RandomUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(randomElement(new Integer[]{1, 2, 3, 4, 5, 6}));
+        /*System.out.println(randomElement(new Integer[]{1, 2, 3, 4, 5, 6}));
         System.out.println(randomInt(8, 19));
         System.out.println(randomDouble(3, 16, 5));
         System.out.println(randomFloat(5, 8, 7));
 
-        System.out.println(randomStr(32, true));
+        System.out.println(randomStr(24, true));
         System.out.println(randomStr(32, false));
         System.out.println(randomChinese(132));
         System.out.println(randomIp());
@@ -261,7 +259,24 @@ public class RandomUtils {
 
         System.out.println(getTimeRolling());
 
-        System.out.println(getShortUuid(20));
+        System.out.println(getShortUuid(20));*/
 
+        System.out.println(randomStr(24, true));
+
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 1000000; i++) {
+            list.add(randomStr(8, true));
+        }
+
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        for (String string : list) {
+            if (hashMap.get(string) != null) {
+                Integer value = hashMap.get(string);
+                hashMap.put(string, value + 1);
+                System.out.println("the element:" + string + " is repeat");
+            } else {
+                hashMap.put(string, 1);
+            }
+        }
     }
 }

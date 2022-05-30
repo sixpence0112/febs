@@ -2,4 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cxf.febs.server.system.mapper.FundMapper">
 
+    <select id="findFundPage" parameterType="com.cxf.febs.server.system.entity.Fund" resultType="com.cxf.febs.server.system.entity.Fund">
+        select
+        f.*,
+        g.name groupName
+        from
+        t_fund f
+        left join t_fund_group fg on (fg.fund_id = f.id)
+        left join t_group g on (g.id = fg.group_id)
+        where 1=1
+        <if test="fund.selected != null and fund.selected != ''">
+            and f.selected = #{fund.selected}
+        </if>
+        <if test="fund.fundName != null and fund.fundName != ''">
+            and f.fund_name like concat('%', #{fund.fundName}, '%')
+        </if>
+        <if test="fund.fundCode != null and fund.fundCode != ''">
+            and f.fund_code = #{fund.fundCode}
+        </if>
+        <if test="fund.groupName != null and fund.groupName != ''">
+            and g.name = #{fund.groupName}
+        </if>
+    </select>
 </mapper>

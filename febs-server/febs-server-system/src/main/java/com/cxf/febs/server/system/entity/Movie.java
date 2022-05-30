@@ -89,6 +89,12 @@ public class Movie implements Serializable {
     private byte[] poster;
 
     /**
+     * 观看次数
+     */
+    @TableField("POSTER")
+    private String frequency;
+
+    /**
      * 最低评分
      */
     private transient String scoreFrom;

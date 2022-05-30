@@ -44,11 +44,11 @@
             <artifactId>febs-common-doc-starter</artifactId>
             <version>${febs-cloud.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.cxf</groupId>
             <artifactId>febs-common-logging-starter</artifactId>
             <version>${febs-cloud.version}</version>
-        </dependency>
+        </dependency>-->
 
         <!-- MySQL连接驱动和MyBatis Plus多数据源 -->
         <dependency>

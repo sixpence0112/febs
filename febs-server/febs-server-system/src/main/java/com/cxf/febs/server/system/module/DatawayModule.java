@@ -1,3 +1,4 @@
+/*
 package com.cxf.febs.server.system.module;
 
 import net.hasor.core.ApiBinder;
@@ -10,11 +11,13 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
+*/
 /**
  * 把数据源设置到Hasor容器中
  * @author sixpence
  * @version 1.0 2021/4/6
- */
+ *//*
+
 @DimModule
 @Component
 public class DatawayModule implements SpringModule {
@@ -29,3 +32,4 @@ public class DatawayModule implements SpringModule {
 
     }
 }
+*/
